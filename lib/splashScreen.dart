@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'LoginPage/signIn.dart';
+import 'LoginPage/signInScreen.dart';
 import 'Navigation/HomePage/home.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
       //       child: Image.asset('assets/logo.png', width: 100, height: 100),
       //     )
       // ),
-      nextScreen: SigningInPage(),
+      nextScreen: SignInScreen(),
       splashTransition: SplashTransition.fadeTransition,
     );
   }

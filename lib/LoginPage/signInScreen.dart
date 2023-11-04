@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../Navigation/UserChatBox/utils/constants.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'reusable_widget.dart';
+import 'passwordTextFormField.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -26,7 +27,10 @@ class _SignInScreenState extends State<SignInScreen> {
         email: _emailController.text,
         password: _passwordController.text,
       );
-      Navigator.pushReplacementNamed(context, '/userHome');
+      Navigator.pushNamedAndRemoveUntil(context, '/userHome', (Route<dynamic> route) => false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        reusableSnackBar('Sign In Successful', Colors.green),
+      );
     } on AuthException catch (error) {
       context.showErrorSnackBar(message: error.message);
     } catch (_) {
@@ -73,8 +77,16 @@ class _SignInScreenState extends State<SignInScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  reusableTextField("Enter Password", Icons.lock_outline, true,
-                      _passwordController),
+                  PasswordTextFormField(
+                    labelText: 'Enter the Password',
+                    passwordEditingController: _passwordController,
+                    validator: (value) {
+                      if (value?.isEmpty ?? true) {
+                        return 'Enter password.';
+                      }
+                      return null;
+                    },
+                  ),
                   const SizedBox(
                     height: 5,
                   ),
@@ -85,7 +97,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
                     child: ElevatedButton(
-                      onPressed: _isLoading ? null : _signIn,
+                      onPressed: _signIn,
                       child: Text(
                         "SIGN IN",
                         style: const TextStyle(
@@ -155,7 +167,7 @@ class _SignInScreenState extends State<SignInScreen> {
           children: [
             GestureDetector(
               onTap: () {
-                Navigator.pushReplacementNamed(context, '/userHome');
+                Navigator.pushNamedAndRemoveUntil(context, '/userHome', (Route<dynamic> route) => false);
               },
               child: const Text(
                 "Or log in as guest",

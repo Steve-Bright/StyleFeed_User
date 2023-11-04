@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import 'LoginPage/signUp.dart';
-import 'LoginPage/signIn.dart';
+
 import 'Navigation/SavedPage/saveCard.dart';
 import 'Navigation/HomePage/home.dart';
 import 'Navigation/UserChatBox/chatHome.dart';
