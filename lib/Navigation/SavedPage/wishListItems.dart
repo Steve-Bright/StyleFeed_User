@@ -83,7 +83,7 @@ class _wishListItemsState extends State<wishListItems> {
                           fontSize: 15, color: Colors.black
                       )),
                 ),
-                Padding(padding: EdgeInsets.symmetric(vertical: 10),
+                Padding(padding: EdgeInsets.symmetric(vertical: 3),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

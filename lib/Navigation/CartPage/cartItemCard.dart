@@ -56,8 +56,8 @@ class _CartItemCardState extends State<CartItemCard> {
                 padding: EdgeInsets.all(15),
                 child: Image.asset(
                   widget.imageString,
-                  width: 150,
-                  height: 150,
+                  width: 120,
+                  // height: 150,
                 ),
               ),
               Column(

@@ -47,7 +47,7 @@ class _RewardsTabState extends State<RewardsTab> {
                       Container(
                         child: Image.asset('assets/rewards/hotpot.jpg'),
                         margin: EdgeInsets.all(10),
-                        width: 100,
+                        width: 90,
                         height: 100,
                       ),
                       Container(

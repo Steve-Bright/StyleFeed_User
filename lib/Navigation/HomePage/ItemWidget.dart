@@ -21,7 +21,7 @@ class _ItemWidgetState extends State<ItemWidget> {
         for(int i=0; i<products.length; i++)
         Container(
           padding: EdgeInsets.only(left: 15, right: 7, top: 10),
-          margin: EdgeInsets.symmetric(vertical: 1, horizontal: 8),
+          margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
           decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -69,7 +69,7 @@ class _ItemWidgetState extends State<ItemWidget> {
                 alignment: Alignment.centerLeft,
                 child: Text(products[i].title,
                   style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 18,
                   color: Colors.black, 
                   fontWeight: FontWeight.bold,
                 ),),
@@ -78,15 +78,16 @@ class _ItemWidgetState extends State<ItemWidget> {
                 alignment: Alignment.centerLeft,
                 child: Text(products[i].description,
                 style: TextStyle(
-                  fontSize: 10, color: Colors.black
+                  fontSize: 15, color: Colors.black
                 )),
               ),
-              Padding(padding: EdgeInsets.symmetric(vertical: 5),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 5),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("\$55",
-                  style: TextStyle(fontSize: 13,
+                  style: TextStyle(fontSize: 15,
                   fontWeight: FontWeight.bold,
                   color: Colors.black
                   ),

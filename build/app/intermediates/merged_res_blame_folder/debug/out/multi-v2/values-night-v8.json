@@ -4,7 +4,7 @@
             "outputFile": "com.example.style_feed.app-mergeDebugResources-22:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "D:\\Gusto Innovation\\StyleFeed_User\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\swemh\\Documents\\StyleFeed\\STYLEFEED\\StyleFeed_User\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

@@ -33,15 +33,15 @@ class _searchResultsState extends State<searchResults> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: (){
-            Navigator.pushReplacementNamed(context, '/userHome');
+            Navigator.of(context).popUntil((route) => route.isFirst);
           },
           icon: Icon(Icons.arrow_back)
         ),
         actions: [
             Container(
-              margin: EdgeInsets.only(top: 10, bottom: 10, left: 50),
-              padding: EdgeInsets.only(bottom: 5),
-              width: 290,
+              margin: EdgeInsets.only(top: 10, bottom: 10),
+              padding: EdgeInsets.only(left: 5),
+              width: 270,
               decoration: BoxDecoration(
                 color: Colors.white,
                   borderRadius: BorderRadius.circular(30)
@@ -49,7 +49,7 @@ class _searchResultsState extends State<searchResults> {
               child: TextFormField(
                 decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: "Search Here...."
+                    hintText: "Search Here"
                 ),
               ),
             ),
