@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:timeago/timeago.dart';
-import '../../Model/Product.dart';
+import '../../Model/product.dart';
 import '../../Model/itemMessage.dart';
 
 class ReadMore extends StatefulWidget {

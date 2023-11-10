@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'DetailScreen.dart';
-import '../../Model/Product.dart';
+import '../../Controller/cartController.dart';
+import '../../Model/product.dart';
 
 class ItemWidget extends StatefulWidget {
   const ItemWidget({super.key});
@@ -19,88 +21,104 @@ class _ItemWidgetState extends State<ItemWidget> {
       shrinkWrap: true,
       children: [
         for(int i=0; i<products.length; i++)
-        Container(
-          padding: EdgeInsets.only(left: 15, right: 7, top: 10),
-          margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
-          decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          ),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+          Container(
+            padding: EdgeInsets.only(left: 15, right: 7, top: 10),
+            margin: EdgeInsets.symmetric(vertical: 3, horizontal: 10),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: const Text(
+                        "-50%",
+                        style: TextStyle(
+                            fontSize: 10,
+                            color: Color(0xFFEDECF2),
+                            fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ),
+                    const Icon(Icons.favorite_border,
+                      color: Colors.red,
+                    ),
+                  ],
+                ),
+                InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailScreen(products[i])));
+                  },
+                  child: Container(
+                    margin: EdgeInsets.all(1),
+                    child: Image.asset(products[i].image.value,
+                      width: 120,
+                      height: 120,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
                 Container(
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    "-50%",
-                  style: TextStyle(
-                    fontSize: 10,
-                    color: Color(0xFFEDECF2),
-                    fontWeight: FontWeight.bold
-                  ),
-                  ),
+                  padding: EdgeInsets.only(bottom: 5),
+                  alignment: Alignment.centerLeft,
+                  child: Text(products[i].title.value,
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),),
                 ),
-                Icon(Icons.favorite_border,
-                color: Colors.red,
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text(products[i].description.value,
+                      style: TextStyle(
+                          fontSize: 14, color: Colors.black
+                      )),
                 ),
-                ],
-              ),
-              InkWell(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailScreen(products[i])));
-                },
-                child: Container(
-                  margin: EdgeInsets.all(1),
-                  child: Image.asset(products[i].image,
-                  width: 120,
-                  height: 120,
-                  fit: BoxFit.contain,
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 3),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("\$55",
+                        style: TextStyle(fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.shopping_cart_checkout),
+                        color: Colors.black,
+                        onPressed: (){
+                          // Get.to(NextPage() , arguments: {'itemName': products[i].title});
+                          // Find the cart controller
+                          final CartController cartController = Get.find<CartController>();
+                          // Add item to cart
+                          bool condition = cartController.addToCart(products[i]);
+                          if(condition == true) {
+                            Get.snackbar('Product Added', 'You have added ${products[i].title} to the cart!',
+                                snackPosition: SnackPosition.BOTTOM);
+                          }
+                          else{
+                            Get.snackbar('Duplicate', 'You already have added ${products[i].title} to the cart!',
+                                snackPosition: SnackPosition.BOTTOM);
+                          }
+                        },
+                      )
+                    ],
                   ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(bottom: 5),
-                alignment: Alignment.centerLeft,
-                child: Text(products[i].title,
-                  style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black, 
-                  fontWeight: FontWeight.bold,
-                ),),
-              ),
-              Container(
-                alignment: Alignment.centerLeft,
-                child: Text(products[i].description,
-                style: TextStyle(
-                  fontSize: 15, color: Colors.black
-                )),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("\$55",
-                  style: TextStyle(fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black
-                  ),
-                  ),
-                  Icon(Icons.shopping_cart_checkout,
-                  color: Colors.black
-                  )
-                ],
-              ),
-              )
-            ],
-          ),
-        )
+                )
+              ],
+            ),
+          )
       ],
     );
   }
