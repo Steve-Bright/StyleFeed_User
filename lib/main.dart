@@ -21,6 +21,7 @@ import 'UserProfile/profile_screen/edit_profile_screen.dart';
 import 'LoginPage/signInScreen.dart';
 import 'LoginPage/signUpScreen.dart';
 import 'LoginPage/reset_password.dart';
+import 'Navigation/CartPage/orderSuccess/checkout_detail.dart';
 
 
 
@@ -55,7 +56,8 @@ Future<void> main() async{
         '/chatPage': (context) => ChatPage(),
         '/checkoutDetail': (context) => CheckoutDetail(),
         '/profile': (context) => ProfileScreen(),
-        '/editProfile': (context) => EditProfileScreen()
+        '/editProfile': (context) => EditProfileScreen(),
+        '/checkoutDetail': (context) => CheckoutDetail(),
       },
     ),
   );

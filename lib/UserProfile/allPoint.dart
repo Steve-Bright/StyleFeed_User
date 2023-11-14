@@ -63,7 +63,7 @@ class _AllTabState extends State<AllTab> {
                   ),
                 ),
                 SizedBox(
-                  width: 80,
+                  width: 60,
                 ),
                 Container(
                   child: Text('+200', style: TextStyle(color: Colors.green, fontSize: 30))

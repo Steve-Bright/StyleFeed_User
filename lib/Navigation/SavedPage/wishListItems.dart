@@ -23,7 +23,7 @@ class _wishListItemsState extends State<wishListItems> {
         for(int i=1; i<descritpion.length; i++)
           Container(
             padding: EdgeInsets.only(left: 15, right: 15, top: 10),
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+            margin: EdgeInsets.symmetric(vertical: 3, horizontal: 10),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),

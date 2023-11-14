@@ -245,7 +245,7 @@ class _OrderSuccessScreenState extends State<OrderSuccessScreen> {
                                     width: 50,
                                     height: 50,
                                     child: Image.asset(
-                                        'assets/order_success/order1.jpg',
+                                        'assets/product/1.png',
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -256,7 +256,7 @@ class _OrderSuccessScreenState extends State<OrderSuccessScreen> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         ClayText(
-                                          'Backless Crop-Top',
+                                          'Shoe',
                                           emboss: true,
                                           depth: 120,
                                           color: Colors.grey[400],
@@ -342,7 +342,7 @@ class _OrderSuccessScreenState extends State<OrderSuccessScreen> {
                                     width: 50,
                                     height: 50,
                                     child: Image.asset(
-                                      'assets/order_success/order2.jpg',
+                                      'assets/product/2.png',
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -353,7 +353,7 @@ class _OrderSuccessScreenState extends State<OrderSuccessScreen> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         ClayText(
-                                          'Tweet Coat',
+                                          'Dress',
                                           emboss: true,
                                           depth: 120,
                                           color: Colors.grey[400],

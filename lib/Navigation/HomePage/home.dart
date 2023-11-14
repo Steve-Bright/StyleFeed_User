@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'CategoriesWidget.dart';
 import 'ItemWidget.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../navigationBar.dart';
 
 class Myhome extends StatelessWidget {
@@ -12,15 +12,21 @@ class Myhome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: null,
-        title: Text("STYLE FEED", style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold, color: Colors.black,)),
+        backgroundColor: Color(0xFFEDECF2),
+        elevation: 0,
+        // leading: null,
+        title: Text("Style Feed", style: GoogleFonts.orbitron(
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontSize: 25,
+        ),),
         actions: [
           IconButton(
               onPressed: (){
                 // Navigator.pushNamed(context, '/pointSystem');
                 Navigator.pushNamed(context, '/profile');
               },
-              icon: Icon(Icons.person)
+              icon: Icon(Icons.person, color: Colors.black)
           )
         ],
       ),

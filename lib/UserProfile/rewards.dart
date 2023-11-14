@@ -56,14 +56,14 @@ class _RewardsTabState extends State<RewardsTab> {
                           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Delicious Pizza', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19,)),
+                              Text('Delicious Pizza', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17,)),
                               RatingBar.builder(
                                 initialRating: 3,
                                 minRating: 1,
                                 direction: Axis.horizontal,
                                 allowHalfRating: false,
                                 itemCount: 5,
-                                itemSize: 17,
+                                itemSize: 15,
                                 itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
                                 itemBuilder: (context, _) => Icon(
                                   Icons.star,
@@ -85,7 +85,7 @@ class _RewardsTabState extends State<RewardsTab> {
                               children: [
                                 Container(
                                   padding: EdgeInsets.all(10),
-                                  child: Text('Points: 100', style: TextStyle(color: Colors.white)),
+                                  child: Text('7k points', style: TextStyle(color: Colors.white)),
                                   decoration: BoxDecoration(
                                     color: Colors.amber,
                                     borderRadius: BorderRadius.circular(15),

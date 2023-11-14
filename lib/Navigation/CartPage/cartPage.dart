@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../../Controller/cartController.dart';
 import 'cartItemDesign.dart';
 import '../navigationBar.dart';
+import 'orderSuccess/checkout_detail.dart';
 
 
 class CartPage extends StatefulWidget {
@@ -29,7 +30,7 @@ class _CartPageState extends State<CartPage> {
         ),
         title: Text('Shopping Cart (${cartController.cartItems.length})', style: TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 25.0,
+          fontSize: 23.0,
           color: Colors.black
         )),
         actions: [
@@ -74,11 +75,11 @@ class _CartPageState extends State<CartPage> {
                       children: [
                         Text(
                           'Discount:',
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 15),
                         ),
                         Text(
                           '${cartController.totalDiscount}',
-                          style: TextStyle(fontSize: 20)
+                          style: TextStyle(fontSize: 15)
                         )
                       ],
                     ),
@@ -87,11 +88,11 @@ class _CartPageState extends State<CartPage> {
                       children: [
                         Text(
                             ' Total:',
-                            style: TextStyle(fontSize: 20)
+                            style: TextStyle(fontSize: 15)
                         ),
                         Text(
                           ' ${cartController.totalCartPrice}',
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 15),
                         )
                       ],
                     ),
@@ -99,8 +100,8 @@ class _CartPageState extends State<CartPage> {
                       padding: EdgeInsets.all(5),
                       child: TextButton(
                         onPressed: (){
-                          // Get.to(() => AnotherPage());
-                          Navigator.pushNamed(context, '/checkoutDetail');
+                          Get.to(() => CheckoutDetail());
+                          // Navigator.pushNamed(context, '/checkoutDetail');
                         },
                         child: Container(
                           width: double.infinity,

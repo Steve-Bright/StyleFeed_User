@@ -122,7 +122,7 @@ class _CheckoutDetailState extends State<CheckoutDetail> {
                             width: 80,
                             height: 80,
                             child: Image.asset(
-                              'assets/order_success/order1.jpg',
+                              'assets/product/1.png',
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -132,7 +132,7 @@ class _CheckoutDetailState extends State<CheckoutDetail> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 ClayText(
-                                  'Backless Crop-Top',
+                                  'Shoe',
                                   emboss: true,
                                   depth: 120,
                                   color: Colors.grey[400],
@@ -263,7 +263,7 @@ class _CheckoutDetailState extends State<CheckoutDetail> {
                             width: 80,
                             height: 80,
                             child: Image.asset(
-                              'assets/order_success/order2.jpg',
+                              'assets/product/2.png',
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -273,7 +273,7 @@ class _CheckoutDetailState extends State<CheckoutDetail> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 ClayText(
-                                  'Tweet Coat',
+                                  'Dress',
                                   emboss: true,
                                   depth: 120,
                                   color: Colors.grey[400],

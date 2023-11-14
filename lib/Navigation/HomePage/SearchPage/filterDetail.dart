@@ -49,7 +49,7 @@ class _FilterDetailState extends State<FilterDetail> {
     return Column(
       children: [
         Container(
-          height: 670,
+          height: 610,
           margin: EdgeInsets.only(top: 100),
           padding: EdgeInsets.only(left: 30),
           child: Column(
