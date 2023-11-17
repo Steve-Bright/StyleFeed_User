@@ -3,6 +3,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:get/get.dart';
 
 import 'Controller/cartController.dart';
+import 'Controller/favouriteController.dart';
 import 'Navigation/SavedPage/saveCard.dart';
 import 'Navigation/HomePage/home.dart';
 import 'Navigation/UserChatBox/chatHome.dart';
@@ -27,6 +28,7 @@ import 'Navigation/CartPage/orderSuccess/checkout_detail.dart';
 
 Future<void> main() async{
   Get.put(CartController());
+  Get.put(FavouriteController());
   WidgetsFlutterBinding.ensureInitialized();
 
   await Supabase.initialize(

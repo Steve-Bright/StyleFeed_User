@@ -28,11 +28,11 @@ class _CartPageState extends State<CartPage> {
             Get.offAllNamed('/userHome');
           },
         ),
-        title: Text('Shopping Cart (${cartController.cartItems.length})', style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 23.0,
-          color: Colors.black
-        )),
+        title: Obx(() => Text('Shopping Cart (${cartController.cartItems.length})', style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 23.0,
+            color: Colors.black
+        ))),
         actions: [
           IconButton(
               onPressed: cartController.removeAllCartItems,

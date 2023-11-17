@@ -159,7 +159,7 @@ class _SignInScreenState extends State<SignInScreen> {
         ),
 
         const SizedBox(
-          height: 100,
+          height: 30,
         ),
 
         Row(

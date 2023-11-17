@@ -57,7 +57,7 @@ class _CartItemCardState extends State<CartItemCard> {
                       )
                     ],
                   ),
-                  Flexible(child: Container(child: Text('${widget.product.description}', overflow: TextOverflow.ellipsis,))),
+                  Flexible(child: Container(child: Text('${widget.product.shop}', overflow: TextOverflow.ellipsis,))),
                   Row(
                     children: [
                       Text('${widget.product.price}'),

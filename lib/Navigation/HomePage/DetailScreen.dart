@@ -4,52 +4,6 @@ import 'package:timeago/timeago.dart';
 import '../../Model/product.dart';
 import '../../Model/itemMessage.dart';
 
-class ReadMore extends StatefulWidget {
-  @override
-  _ReadMoreState createState() => _ReadMoreState();
-}
-
-class _ReadMoreState extends State<ReadMore> {
-  bool isExpanded = true;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          "The Off-White x Air Jordan 1 Retro High OG was one of the most highly anticipated footwear collaborations of 2017. It marked the first time Virgil Abloh, founder of the Milan-based fashion label and Jordan Brand had teamed up. Nicknamed \"The 10\" edition, this pair comes in the original Chicago-themed white, black and varsity red colorway. Featuring a white, red and black-based deconstructed leather upper with a Swooshless medial side branded with \"Off-White for Nike Air Jordan 1, Beaverton, Oregon, USA Â© 1985."
-          // Show only 3 lines when not expanded
-          ,
-          style: GoogleFonts.montserrat(
-              color: const Color.fromARGB(255, 94, 94, 94)),
-          maxLines: isExpanded ? 2 : 20,
-          overflow: TextOverflow.ellipsis,
-        ),
-        GestureDetector(
-          onTap: () {
-            setState(
-                  () {
-                isExpanded = !isExpanded;
-              },
-            );
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              isExpanded ? 'Read More' : 'Read Less',
-              style: GoogleFonts.montserrat(
-                color: Colors.blue,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
 class DetailScreen extends StatelessWidget {
   final Product _product;
   DetailScreen(this._product);
@@ -62,7 +16,7 @@ class DetailScreen extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 247, 247, 247),
         elevation: 0,
         title: Text(
-          "Product",
+          "Product Detail",
           style: GoogleFonts.montserrat(
               fontSize: 23, fontWeight: FontWeight.bold, color: Colors.black),
         ),
@@ -87,7 +41,7 @@ class DetailScreen extends StatelessWidget {
           Column(
             children: [
               Image.asset(
-                "assets/1.png",
+                _product.image.value,
                 height: 300,
               ),
               SizedBox(
@@ -114,10 +68,12 @@ class DetailScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          child: Text(
-                            "Air Jondon 1 Retro High \nOff-White Chicago",
-                            style: GoogleFonts.montserrat(
-                                fontSize: 18, fontWeight: FontWeight.w700),
+                          child: Flexible(
+                            child: Text(
+                              _product.title.value,
+                              style: GoogleFonts.montserrat(
+                                  fontSize: 18, fontWeight: FontWeight.w700),
+                            ),
                           ),
                         ),
                         Container(
@@ -127,9 +83,9 @@ class DetailScreen extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Text(
-                              "\$5,300",
+                              "${_product.price} MMK",
                               style: GoogleFonts.montserrat(
-                                fontSize: 20,
+                                fontSize: 12,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -246,7 +202,7 @@ class DetailScreen extends StatelessWidget {
                           height: 25,
                         ),
                         Container(
-                          child: ReadMore(),
+                          child: ReadMore(_product),
                         )
                       ],
                     ),
@@ -273,6 +229,56 @@ class DetailScreen extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class ReadMore extends StatefulWidget {
+  final Product _product;
+  ReadMore(this._product);
+
+  @override
+  _ReadMoreState createState() => _ReadMoreState();
+}
+
+class _ReadMoreState extends State<ReadMore> {
+  bool isExpanded = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          widget._product.description.value
+          // "The Off-White x Air Jordan 1 Retro High OG was one of the most highly anticipated footwear collaborations of 2017. It marked the first time Virgil Abloh, founder of the Milan-based fashion label and Jordan Brand had teamed up. Nicknamed \"The 10\" edition, this pair comes in the original Chicago-themed white, black and varsity red colorway. Featuring a white, red and black-based deconstructed leather upper with a Swooshless medial side branded with \"Off-White for Nike Air Jordan 1, Beaverton, Oregon, USA Â© 1985."
+          // Show only 3 lines when not expanded
+          ,
+          style: GoogleFonts.montserrat(
+              color: const Color.fromARGB(255, 94, 94, 94)),
+          maxLines: isExpanded ? 2 : 20,
+          overflow: TextOverflow.ellipsis,
+        ),
+        GestureDetector(
+          onTap: () {
+            setState(
+                  () {
+                isExpanded = !isExpanded;
+              },
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              isExpanded ? 'Read More' : 'Read Less',
+              style: GoogleFonts.montserrat(
+                color: Colors.blue,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

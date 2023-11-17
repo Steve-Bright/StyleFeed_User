@@ -1,4 +1,3 @@
-
 import 'product.dart';
 
 class CartItem {
@@ -16,3 +15,4 @@ class CartItem {
     this.subDiscount = 0,
   });
 }
+
