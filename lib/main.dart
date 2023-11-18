@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 
 import 'Controller/cartController.dart';
 import 'Controller/favouriteController.dart';
-import 'Navigation/SavedPage/saveCard.dart';
 import 'Navigation/SavedPage/favouritePage.dart';
 import 'Navigation/HomePage/home.dart';
 import 'Navigation/UserChatBox/chatHome.dart';
@@ -48,7 +47,6 @@ Future<void> main() async{
         '/signIn': (context)=> const SignInScreen(),
         '/signUp': (context)=> const SignUpScreen(isRegistering: false),
         '/resetPassword': (context)=> const ResetPassword(),
-        '/savedCard': (context) => const SavedPage(),
         '/favouritePage': (context) => const FavouritePage(),
         '/cart': (context) => CartPage(),
         '/userHome': (context) => Myhome(),
