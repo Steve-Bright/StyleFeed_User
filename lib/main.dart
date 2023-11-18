@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import 'Controller/cartController.dart';
 import 'Controller/favouriteController.dart';
+import 'Controller/searchController.dart';
 import 'Navigation/SavedPage/favouritePage.dart';
 import 'Navigation/HomePage/home.dart';
 import 'Navigation/UserChatBox/chatHome.dart';
@@ -23,13 +24,14 @@ import 'UserProfile/profile_screen/edit_profile_screen.dart';
 import 'LoginPage/signInScreen.dart';
 import 'LoginPage/signUpScreen.dart';
 import 'LoginPage/reset_password.dart';
-import 'Navigation/CartPage/orderSuccess/checkout_detail.dart';
+import 'package:style_feed/Navigation/HomePage/SearchPage/searchResultsPage.dart';
 
 
 
 Future<void> main() async{
   Get.put(CartController());
   Get.put(FavouriteController());
+  Get.put(SearchingController());
   WidgetsFlutterBinding.ensureInitialized();
 
   await Supabase.initialize(
@@ -52,8 +54,8 @@ Future<void> main() async{
         '/userHome': (context) => Myhome(),
         '/chatHome': (context) => ChatHome(),
         '/forgotPassword': (context) => ForgotPassword(),
-        '/searchResults': (context) => searchResults(),
-        // '/itemDetail': (context) => DetailScreen(),
+        // '/searchResults': (context) => searchResults(),
+        '/searchResults': (context) => SearchResultsPage(),
         '/pointSystem': (context) => PointSystem(),
         '/chatHome': (context) => ChatHome(),
         '/chatPage': (context) => ChatPage(),

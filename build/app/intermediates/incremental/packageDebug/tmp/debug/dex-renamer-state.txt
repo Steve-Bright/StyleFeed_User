@@ -1,4 +1,4 @@
-#Sat Nov 18 15:57:58 MMT 2023
+#Sat Nov 18 22:28:35 MMT 2023
 base.0=C\:\\Users\\swemh\\Documents\\StyleFeed\\STYLEFEED\\StyleFeed_User\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

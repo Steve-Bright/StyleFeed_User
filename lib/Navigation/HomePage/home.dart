@@ -1,15 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'CategoriesWidget.dart';
 import 'ItemWidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../navigationBar.dart';
+import 'package:style_feed/Controller/searchController.dart';
 
 class Myhome extends StatelessWidget {
   const Myhome({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final SearchingController searchC = Get.find<SearchingController>();
+    String? searchResult;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFFEDECF2),
@@ -57,16 +62,20 @@ class Myhome extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(left: 5),
                 width: 200,
-                child: TextFormField(
+                child: TextField(
+                  onChanged: (value) => searchResult = value,
                   decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: "Search Here...."
+                    hintText: "Search Here."
                   ),
                 ),
               ),
               Spacer(),
               IconButton(
                 onPressed: (){
+                  if(searchResult != null){
+                    searchC.searchProduct(searchResult!);
+                  }
                   Navigator.pushNamed(context, '/searchResults');
                 },
                 icon: Icon(
