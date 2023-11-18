@@ -50,15 +50,17 @@ class _SearchResultDesignState extends State<SearchResultDesign> {
                   ),
                 ),
               ),
-              IconButton(
-                icon: Icon(
-                  widget.product.isFavourite.value ? Icons.favorite : Icons.favorite_border,
+              Obx(() =>
+                IconButton(
+                  icon: Icon(
+                    widget.product.isFavourite.value ? Icons.favorite : Icons.favorite_border,
+                  ),
+                  onPressed: (){
+                    final FavouriteController f = Get.find<FavouriteController>();
+                    f.toggleFavourite(widget.product);
+                  },
+                  color: Colors.red,
                 ),
-                onPressed: (){
-                  final FavouriteController f = Get.find<FavouriteController>();
-                  f.toggleFavourite(widget.product);
-                },
-                color: Colors.red,
               ),
             ],
           ),

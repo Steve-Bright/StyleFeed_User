@@ -21,12 +21,14 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
 
     return Scaffold(
       appBar: AppBar(
+          backgroundColor: Color(0xFFEDECF2),
+          elevation: 0,
           leading: IconButton(
               onPressed: (){
                 Navigator.pushNamedAndRemoveUntil(context, '/userHome', (Route<dynamic> route) => false);
                 // Navigator.of(context).popUntil((route) => route.isFirst);
               },
-              icon: Icon(Icons.arrow_back)
+              icon: Icon(Icons.arrow_back, color: Colors.black)
           ),
           actions: [
             Container(
@@ -54,6 +56,7 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
                 },
                 icon: Icon(
                   Icons.search,
+                  color: Colors.black,
                   size: 27,
                 )
             )
@@ -66,7 +69,6 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SearchOptimiseArea(),
                 Container(
                   alignment: Alignment.centerLeft,
                   margin: EdgeInsets.symmetric(vertical: 15, horizontal: 10),

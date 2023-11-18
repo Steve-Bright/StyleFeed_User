@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:style_feed/Model/searchedItems.dart';
 import 'package:style_feed/Model/product.dart';
-import 'package:style_feed/Navigation/HomePage/SearchPage/searchResults.dart';
 
 class SearchingController extends GetxController{
   var searchResults = <SearchedItem>[].obs;
