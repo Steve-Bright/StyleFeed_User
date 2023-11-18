@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:style_feed/Navigation/SavedPage/favouritePage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:get/get.dart';
 
 import 'Controller/cartController.dart';
 import 'Controller/favouriteController.dart';
 import 'Navigation/SavedPage/saveCard.dart';
+import 'Navigation/SavedPage/favouritePage.dart';
 import 'Navigation/HomePage/home.dart';
 import 'Navigation/UserChatBox/chatHome.dart';
 import 'Navigation/CartPage/cartPage.dart';
@@ -47,6 +49,7 @@ Future<void> main() async{
         '/signUp': (context)=> const SignUpScreen(isRegistering: false),
         '/resetPassword': (context)=> const ResetPassword(),
         '/savedCard': (context) => const SavedPage(),
+        '/favouritePage': (context) => const FavouritePage(),
         '/cart': (context) => CartPage(),
         '/userHome': (context) => Myhome(),
         '/chatHome': (context) => ChatHome(),

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:style_feed/Controller/favouriteController.dart';
 import 'DetailScreen.dart';
 import '../../Controller/cartController.dart';
-import '../../Model/product.dart';
 import '../../Model/featuredItems.dart';
 
 class ItemWidget extends StatefulWidget {
@@ -127,13 +126,13 @@ class _ItemWidgetState extends State<ItemWidget> {
                           // Find the cart controller
                           final CartController cartController = Get.find<CartController>();
                           // Add item to cart
-                          bool condition = cartController.addToCart(products[i]);
+                          bool condition = cartController.addToCart(homepageItems[i].product);
                           if(condition == true) {
-                            Get.snackbar('Product Added', 'You have added ${products[i].title} to the cart!',
+                            Get.snackbar('Product Added', 'You have added ${homepageItems[i].product.title} to the cart!',
                                 snackPosition: SnackPosition.BOTTOM);
                           }
                           else{
-                            Get.snackbar('Duplicate', 'You already have added ${products[i].title} to the cart!',
+                            Get.snackbar('Duplicate', 'You already have added ${homepageItems[i].product.title} to the cart!',
                                 snackPosition: SnackPosition.BOTTOM);
                           }
                         },

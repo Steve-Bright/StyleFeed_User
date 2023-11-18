@@ -76,7 +76,6 @@ class Myhome extends StatelessWidget {
               )
             ],),
           ),
-
           //Categories
 
         Container(

@@ -57,7 +57,7 @@ List<Product> products = [
       color: Colors.transparent,
       discountPercent: 10,
       discount: ((10/100) * 32000).round(),
-      isFavourite: true,
+      isFavourite: false,
   ),
   Product(
       id: 2,

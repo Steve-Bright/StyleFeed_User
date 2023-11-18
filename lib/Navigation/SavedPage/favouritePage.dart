@@ -1,0 +1,54 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../Controller/favouriteController.dart';
+import '../navigationBar.dart';
+import 'favouriteItemDesign.dart';
+
+class FavouritePage extends StatefulWidget {
+  const FavouritePage({super.key});
+
+  @override
+  State<FavouritePage> createState() => _FavouritePageState();
+}
+
+class _FavouritePageState extends State<FavouritePage> {
+  @override
+  Widget build(BuildContext context) {
+    final FavouriteController favC = Get.find<FavouriteController>();
+
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFFEDECF2),
+        elevation: 0,
+        title: Text('Wishlist', style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 23.0,
+            color: Colors.black
+        )),
+      ),
+
+      body: Obx(() {
+        return Container(
+          color: Color(0xFFEDECF2),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                  child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2, // Number of columns
+                        childAspectRatio: 0.68,
+                      ),
+                    itemCount: favC.favouriteItems.length,
+                      itemBuilder: (context, index) {
+                        return FavouriteItemDesign(product: favC.favouriteItems[index].product);
+                      },
+                    ))
+            ]
+          ),
+        );
+      }),
+        bottomNavigationBar: MyButtonNav()
+    );
+  }
+}

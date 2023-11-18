@@ -28,7 +28,7 @@ class MyButtonNav extends StatelessWidget {
             GButton(
                 icon: Icons.favorite,
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/savedCard');
+                  Navigator.pushReplacementNamed(context, '/favouritePage');
                   // Navigator.push(context, MaterialPageRoute(builder: (context)=> SavedPage()));
                 }),
             GButton(
