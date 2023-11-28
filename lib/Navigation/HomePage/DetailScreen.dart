@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:timeago/timeago.dart';
-import '../../Model/product.dart';
-import '../../Model/itemMessage.dart';
+
+import 'package:style_feed/Model/product.dart';
+import 'package:style_feed/Model/itemMessage.dart';
+import 'package:style_feed/Model/itemDetail.dart';
 
 class DetailScreen extends StatelessWidget {
   final Product _product;
@@ -38,6 +39,7 @@ class DetailScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          shopName(),
           Column(
             children: [
               Image.asset(
@@ -123,6 +125,8 @@ class DetailScreen extends StatelessWidget {
                         ),
                       ],
                     ),
+                    SizedBox(height: 20),
+                    askQus(),
                     SizedBox(
                       height: 20,
                     ),
@@ -213,22 +217,7 @@ class DetailScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_shopping_cart_sharp),
-            label: 'Add to Card',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.message),
-            label: 'Message',
-          )
-        ],
-      ),
+      bottomNavigationBar: bottomAppBar(),
     );
   }
 }

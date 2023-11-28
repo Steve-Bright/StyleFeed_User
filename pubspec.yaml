@@ -96,6 +96,7 @@ flutter:
     - assets/myanmar-townships.json
     - assets/logos/
     - assets/product/
+    - assets/shop/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
