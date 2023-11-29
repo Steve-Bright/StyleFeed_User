@@ -15,15 +15,27 @@ class FeaturedItems {
       featuredId: 1
     ),
     FeaturedItems(
-      product: products[1],
+      product: products[2],
       featuredId: 2
     ),
     FeaturedItems(
-      product: products[2],
+      product: products[3],
       featuredId: 3,
     ),
     FeaturedItems(
-      product: products[3],
+      product: products[6],
       featuredId: 4
+    ),
+    FeaturedItems(
+        product: products[7],
+        featuredId: 5
+    ),
+    FeaturedItems(
+        product: products[10],
+        featuredId: 6
+    ),
+    FeaturedItems(
+        product: products[11],
+        featuredId: 7
     )
   ];

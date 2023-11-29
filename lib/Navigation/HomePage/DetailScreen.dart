@@ -93,7 +93,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                              color: Colors.orange,
+                              color: Colors.black,
                               borderRadius: BorderRadius.circular(10)),
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),

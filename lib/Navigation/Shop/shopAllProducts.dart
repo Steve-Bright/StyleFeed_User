@@ -17,17 +17,21 @@ class _ShopAllProductsPageState extends State<ShopAllProductsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 0.68,
-      ),
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      itemCount: shopC.getShopProducts(widget.seller).length,
-      itemBuilder: (context, index) {
-        return ShopItemGridDesign(product: shopC.getShopProducts(widget.seller)[index]);
-      },
+    return ListView(
+      children: [
+        GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 0.68,
+          ),
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: shopC.getShopProducts(widget.seller).length,
+          itemBuilder: (context, index) {
+            return ShopItemGridDesign(product: shopC.getShopProducts(widget.seller)[index]);
+          },
+        )
+      ]
     );
   }
 }
