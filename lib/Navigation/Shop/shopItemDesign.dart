@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:style_feed/Model/product.dart';
 import 'package:style_feed/Controller/favouriteController.dart';
-import 'package:get/get.dart';
-import 'package:style_feed/Navigation/HomePage/DetailScreen.dart';
 import 'package:style_feed/Controller/cartController.dart';
+import 'package:style_feed/Navigation/HomePage/DetailScreen.dart';
 
-class FavouriteItemDesign extends StatefulWidget {
+class ShopItemGridDesign extends StatefulWidget {
   final Product product;
-
-  FavouriteItemDesign({
-    required this.product
-});
+  const ShopItemGridDesign({required this.product});
 
   @override
-  State<FavouriteItemDesign> createState() => _FavouriteItemDesignState();
+  State<ShopItemGridDesign> createState() => _ShopItemGridDesignState();
 }
 
-class _FavouriteItemDesignState extends State<FavouriteItemDesign> {
+class _ShopItemGridDesignState extends State<ShopItemGridDesign> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,15 +47,17 @@ class _FavouriteItemDesignState extends State<FavouriteItemDesign> {
                   ),
                 ),
               ),
-              IconButton(
-                icon: Icon(
-                  widget.product.isFavourite.value ? Icons.favorite : Icons.favorite_border,
-                ),
-                onPressed: (){
-                  final FavouriteController f = Get.find<FavouriteController>();
-                  f.toggleFavourite(widget.product);
-                },
-                color: Colors.red,
+              Obx(() =>
+                  IconButton(
+                    icon: Icon(
+                      widget.product.isFavourite.value ? Icons.favorite : Icons.favorite_border,
+                    ),
+                    onPressed: (){
+                      final FavouriteController f = Get.find<FavouriteController>();
+                      f.toggleFavourite(widget.product);
+                    },
+                    color: Colors.red,
+                  ),
               ),
             ],
           ),
@@ -137,6 +137,6 @@ class _FavouriteItemDesignState extends State<FavouriteItemDesign> {
           )
         ],
       ),
-    );
+    );;
   }
 }

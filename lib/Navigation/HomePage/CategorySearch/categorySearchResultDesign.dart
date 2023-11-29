@@ -94,7 +94,7 @@ class _CategorySearchResultDesignState extends State<CategorySearchResultDesign>
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
-                        child: Text(widget.product.shop.value,
+                        child: Text(widget.product.shop.name.value,
                             style: TextStyle(
                                 fontSize: 14, color: Colors.black
                             )),

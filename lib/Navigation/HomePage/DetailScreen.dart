@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 import 'package:style_feed/Model/product.dart';
 import 'package:style_feed/Model/itemMessage.dart';
-import 'package:style_feed/Model/itemDetail.dart';
+import 'package:style_feed/Navigation/HomePage/ProductDetailScreen/askQuestionWidget.dart';
+import 'package:style_feed/Navigation/HomePage/ProductDetailScreen/shopNameBar.dart';
+import 'package:style_feed/Navigation/HomePage/ProductDetailScreen/productBottomBar.dart';
+import 'package:style_feed/Navigation/HomePage/ProductDetailScreen/sizeDesign.dart';
+import 'package:style_feed/Controller/favouriteController.dart';
 
-class DetailScreen extends StatelessWidget {
+class DetailScreen extends StatefulWidget {
   final Product _product;
   DetailScreen(this._product);
 
+  @override
+  State<DetailScreen> createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,21 +39,24 @@ class DetailScreen extends StatelessWidget {
             )),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.favorite,
-              color: Colors.redAccent,
-            ),
+            onPressed: () {
+              final FavouriteController f = Get.find<FavouriteController>();
+              f.toggleFavourite(widget._product);
+            },
+            icon: Obx(() => Icon(
+              widget._product.isFavourite.value ? Icons.favorite : Icons.favorite_border,
+            )),
+            color: Colors.red,
           )
         ],
       ),
       body: ListView(
         children: [
-          shopName(),
+          shopName(product: widget._product),
           Column(
             children: [
               Image.asset(
-                _product.image.value,
+                widget._product.image.value,
                 height: 300,
               ),
               SizedBox(
@@ -72,7 +85,7 @@ class DetailScreen extends StatelessWidget {
                         Container(
                           child: Flexible(
                             child: Text(
-                              _product.title.value,
+                              widget._product.title.value,
                               style: GoogleFonts.montserrat(
                                   fontSize: 18, fontWeight: FontWeight.w700),
                             ),
@@ -85,7 +98,7 @@ class DetailScreen extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Text(
-                              "${_product.price} MMK",
+                              "${widget._product.price} MMK",
                               style: GoogleFonts.montserrat(
                                 fontSize: 12,
                                 color: Colors.white,
@@ -143,50 +156,15 @@ class DetailScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.transparent,
-                                  borderRadius: BorderRadius.circular(0),
-                                  border: Border.all(
-                                      color: Colors.black, width: 1)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Text(
-                                  "6.5 UK",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 13,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 3,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.transparent,
-                                  borderRadius: BorderRadius.circular(0),
-                                  border: Border.all(
-                                      color: Colors.black, width: 1)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Text(
-                                  "7.5 UK",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 13,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
+                        Wrap(
+                          spacing: 10.0,
+                          children: List.generate(
+                            widget._product.sizes.length,
+                                (index) => SizeDesign(product: widget._product, index: index)
+                          ),
                         ),
-                        ItemMessage()
+                        ItemMessage(),
+
                       ],
                     ),
                     SizedBox(
@@ -206,7 +184,7 @@ class DetailScreen extends StatelessWidget {
                           height: 25,
                         ),
                         Container(
-                          child: ReadMore(_product),
+                          child: ReadMore(widget._product),
                         )
                       ],
                     ),

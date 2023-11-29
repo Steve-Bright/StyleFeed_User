@@ -3,23 +3,24 @@ import 'package:style_feed/Navigation/SavedPage/favouritePage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:get/get.dart';
 
-import 'Controller/cartController.dart';
-import 'Controller/favouriteController.dart';
-import 'Controller/searchController.dart';
-import 'Controller/categorySearchController.dart';
-import 'Navigation/HomePage/home.dart';
-import 'Navigation/UserChatBox/chatHome.dart';
-import 'Navigation/CartPage/cartPage.dart';
-import 'splashScreen.dart';
-import 'LoginPage/forgotPassword.dart';
-import 'UserProfile/pointSystem.dart';
-import 'Navigation/UserChatBox/chatPage.dart';
-import 'Navigation/CartPage/orderSuccess/checkout_detail.dart';
-import 'UserProfile/profile_screen/profile_screen.dart';
-import 'UserProfile/profile_screen/edit_profile_screen.dart';
-import 'LoginPage/signInScreen.dart';
-import 'LoginPage/signUpScreen.dart';
-import 'LoginPage/reset_password.dart';
+import 'package:style_feed/Controller/cartController.dart';
+import 'package:style_feed/Controller/favouriteController.dart';
+import 'package:style_feed/Controller/searchController.dart';
+import 'package:style_feed/Controller/categorySearchController.dart';
+
+import 'package:style_feed/Navigation/HomePage/home.dart';
+import 'package:style_feed/Navigation/UserChatBox/chatHome.dart';
+import 'package:style_feed/Navigation/CartPage/cartPage.dart';
+import 'package:style_feed/splashScreen.dart';
+import 'package:style_feed/LoginPage/forgotPassword.dart';
+import 'package:style_feed/UserProfile/pointSystem.dart';
+import 'package:style_feed/Navigation/UserChatBox/chatPage.dart';
+import 'package:style_feed/Navigation/CartPage/orderSuccess/checkout_detail.dart';
+import 'package:style_feed/UserProfile/profile_screen/profile_screen.dart';
+import 'package:style_feed/UserProfile/profile_screen/edit_profile_screen.dart';
+import 'package:style_feed/LoginPage/signInScreen.dart';
+import 'package:style_feed/LoginPage/signUpScreen.dart';
+import 'package:style_feed/LoginPage/reset_password.dart';
 import 'package:style_feed/Navigation/HomePage/SearchPage/searchResultsPage.dart';
 
 

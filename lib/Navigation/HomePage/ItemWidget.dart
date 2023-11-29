@@ -97,7 +97,7 @@ class _ItemWidgetState extends State<ItemWidget> {
                         ),
                         Container(
                           alignment: Alignment.centerLeft,
-                          child: Text(homepageItems[i].product.shop.value,
+                          child: Text(homepageItems[i].product.shop.name.value,
                               style: TextStyle(
                                   fontSize: 14, color: Colors.black
                               )),

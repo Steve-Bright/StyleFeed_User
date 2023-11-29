@@ -27,7 +27,7 @@ class _PointSystemState extends State<PointSystem> {
         body: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 30),
+              margin: EdgeInsets.only(top: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -74,7 +74,7 @@ class _PointSystemState extends State<PointSystem> {
                   ) ,
 
                   SizedBox(
-                    height: 30,
+                    height: 10,
                   ),
 
                   TabBar(
@@ -89,7 +89,7 @@ class _PointSystemState extends State<PointSystem> {
                   ),
 
                   Container(
-                    height: 330,
+                    height: 350,
                     // color: Colors.red,
                       child: TabBarView(
                         children: [
