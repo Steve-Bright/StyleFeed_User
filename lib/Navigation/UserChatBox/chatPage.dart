@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../../Model/message.dart';
-import '../../Model/profile.dart';
+import 'package:style_feed/Model/message.dart';
+import 'package:style_feed/Model/profile.dart';
 import 'utils/constants.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:timeago/timeago.dart';

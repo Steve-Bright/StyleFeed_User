@@ -32,7 +32,7 @@ class _DetailScreenState extends State<DetailScreen> {
               fontSize: 23, fontWeight: FontWeight.bold, color: Colors.black),
         ),
         leading: IconButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => Get.back(),
             icon: Icon(
               Icons.arrow_back_ios_new,
               color: Colors.black,
@@ -195,7 +195,7 @@ class _DetailScreenState extends State<DetailScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: bottomAppBar(),
+      bottomNavigationBar: bottomAppBar(product: widget._product),
     );
   }
 }

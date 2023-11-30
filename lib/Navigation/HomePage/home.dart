@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'CategoriesWidget.dart';
-import 'ItemWidget.dart';
+import 'package:style_feed/Navigation/HomePage/CategoriesWidget.dart';
+import 'package:style_feed/Navigation/HomePage/ItemWidget.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../navigationBar.dart';
+import 'package:style_feed/Navigation/navigationBar.dart';
 import 'package:style_feed/Controller/searchController.dart';
 
 class Myhome extends StatelessWidget {
@@ -29,7 +29,8 @@ class Myhome extends StatelessWidget {
           IconButton(
               onPressed: (){
                 // Navigator.pushNamed(context, '/pointSystem');
-                Navigator.pushNamed(context, '/profile');
+                Get.toNamed('/profile');
+                // Navigator.pushNamed(context, '/profile');
               },
               icon: Icon(Icons.person, color: Colors.black)
           )
@@ -76,7 +77,8 @@ class Myhome extends StatelessWidget {
                   if(searchResult != null){
                     searchC.searchProduct(searchResult!);
                   }
-                  Navigator.pushNamed(context, '/searchResults');
+                  Get.toNamed('/searchResults');
+                  // Navigator.pushNamed(context, '/searchResults');
                 },
                 icon: Icon(
                   Icons.search,

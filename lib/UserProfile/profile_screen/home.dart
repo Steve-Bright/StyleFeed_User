@@ -1,7 +1,5 @@
-
-
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -19,7 +17,8 @@ class _HomeState extends State<Home> {
           children: [
             ElevatedButton.icon(
               onPressed: (){
-              Navigator.pushNamed(context, '/profile');
+                Get.toNamed('/profile');
+              // Navigator.pushNamed(context, '/profile');
             },
               icon: Icon(Icons.person_2_rounded),
               label: Text('Profile'),

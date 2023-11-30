@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../Controller/favouriteController.dart';
-import '../navigationBar.dart';
-import 'favouriteItemDesign.dart';
+import 'package:style_feed/Controller/favouriteController.dart';
+import 'package:style_feed/Navigation/navigationBar.dart';
+import 'package:style_feed/Navigation/SavedPage/favouriteItemDesign.dart';
 
 class FavouritePage extends StatefulWidget {
   const FavouritePage({super.key});

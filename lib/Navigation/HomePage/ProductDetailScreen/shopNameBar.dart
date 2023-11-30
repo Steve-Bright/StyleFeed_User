@@ -24,13 +24,18 @@ class _shopNameState extends State<shopName> {
           children: [
             Row(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(20), // Image border
-                  child: SizedBox.fromSize(
-                    size: Size.fromRadius(30), // Image radius
-                    child: Image.asset(
-                      widget.product.shop.image.value,
-                      fit: BoxFit.cover,
+                InkWell(
+                  onTap: (){
+                    Get.to(SellerProfilePage(shop: widget.product.shop));
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20), // Image border
+                    child: SizedBox.fromSize(
+                      size: Size.fromRadius(30), // Image radius
+                      child: Image.asset(
+                        widget.product.shop.image.value,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
@@ -63,7 +68,7 @@ class _shopNameState extends State<shopName> {
               height: 40,
               child: TextButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SellerProfilePage(shop: widget.product.shop)));
+                  // Navigator.push(context, MaterialPageRoute(builder: (context)=>SellerProfilePage(shop: widget.product.shop)));
                 },
                 style: ButtonStyle(
                   backgroundColor:

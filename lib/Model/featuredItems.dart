@@ -1,4 +1,4 @@
-import 'product.dart';
+import 'package:style_feed/Model/product.dart';
 
 class FeaturedItems {
   final Product product;

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:style_feed/Controller/favouriteController.dart';
 import 'DetailScreen.dart';
-import '../../Controller/cartController.dart';
-import '../../Model/featuredItems.dart';
+import 'package:style_feed/Controller/cartController.dart';
+import 'package:style_feed/Model/featuredItems.dart';
+import 'package:style_feed/Navigation/Shop/sellerprofile.dart';
 
 class ItemWidget extends StatefulWidget {
   const ItemWidget({super.key});
@@ -68,7 +69,8 @@ class _ItemWidgetState extends State<ItemWidget> {
                 ),
                 InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailScreen(homepageItems[i].product)));
+                    Get.to(DetailScreen(homepageItems[i].product));
+                    // Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailScreen(homepageItems[i].product)));
                   },
                   child: Container(
                     margin: EdgeInsets.all(1),
@@ -95,12 +97,18 @@ class _ItemWidgetState extends State<ItemWidget> {
                               fontWeight: FontWeight.bold,
                             ),),
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          child: Text(homepageItems[i].product.shop.name.value,
-                              style: TextStyle(
-                                  fontSize: 14, color: Colors.black
-                              )),
+                        InkWell(
+                          onTap: (){
+                            Get.to(SellerProfilePage(shop: homepageItems[i].product.shop));
+                            // Navigator.push(context, MaterialPageRoute(builder: (context)=>SellerProfilePage(shop: homepageItems[i].product.shop)));
+                          },
+                          child: Container(
+                            alignment: Alignment.centerLeft,
+                            child: Text(homepageItems[i].product.shop.name.value,
+                                style: TextStyle(
+                                    fontSize: 14, color: Colors.black
+                                )),
+                          ),
                         )
                       ]
                     )
@@ -122,8 +130,6 @@ class _ItemWidgetState extends State<ItemWidget> {
                         icon: Icon(Icons.shopping_cart_checkout),
                         color: Colors.black,
                         onPressed: (){
-                          // Get.to(NextPage() , arguments: {'itemName': products[i].title});
-                          // Find the cart controller
                           final CartController cartController = Get.find<CartController>();
                           // Add item to cart
                           bool condition = cartController.addToCart(homepageItems[i].product);

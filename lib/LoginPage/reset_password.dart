@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'color_utils.dart';
-import 'reusable_widget.dart';
+import 'package:style_feed/LoginPage/reusable_widget.dart';
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({Key? key}) : super(key: key);

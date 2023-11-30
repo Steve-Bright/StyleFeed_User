@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
+import 'package:style_feed/Controller/cartController.dart';
+import 'package:style_feed/Model/product.dart';
+
+import 'package:style_feed/Navigation/Shop/sellerprofile.dart';
 
 class bottomAppBar extends StatefulWidget {
-  const bottomAppBar({super.key});
+  final Product product;
+  const bottomAppBar({required this.product});
 
   @override
   State<bottomAppBar> createState() => _bottomAppBarState();
@@ -18,7 +24,10 @@ class _bottomAppBarState extends State<bottomAppBar> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.to(SellerProfilePage(shop: widget.product.shop));
+                // Navigator.push(context, MaterialPageRoute(builder: (context)=>SellerProfilePage(shop: widget.product.shop)));
+              },
               style: ButtonStyle(
                 backgroundColor:
                 MaterialStatePropertyAll<Color>(Colors.transparent),
@@ -49,7 +58,19 @@ class _bottomAppBarState extends State<bottomAppBar> {
                 style: ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll<Color>(Colors.black)
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  final CartController cartController = Get.find<CartController>();
+                  // Add item to cart
+                  bool condition = cartController.addToCart(widget.product);
+                  if(condition == true) {
+                    Get.snackbar('Product Added', 'You have added ${widget.product.title} to the cart!',
+                        snackPosition: SnackPosition.BOTTOM);
+                  }
+                  else{
+                    Get.snackbar('Duplicate', 'You already have added ${widget.product.title} to the cart!',
+                        snackPosition: SnackPosition.BOTTOM);
+                  }
+                },
                 child: Row(
                   children: [
                     Container(

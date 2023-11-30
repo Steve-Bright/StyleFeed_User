@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:side_sheet/side_sheet.dart';
-import 'filterDetail.dart';
+import 'package:style_feed/Navigation/HomePage/SearchPage/filterDetail.dart';
 
 enum SampleItem { filter1, filter2, filter3, filter4, filter5 }
 

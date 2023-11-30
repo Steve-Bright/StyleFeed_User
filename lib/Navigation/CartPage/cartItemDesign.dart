@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../Controller/cartController.dart';
-import '../../Model/product.dart';
+import 'package:style_feed/Controller/cartController.dart';
+import 'package:style_feed/Model/product.dart';
 
 class CartItemCard extends StatefulWidget {
   final Product product;
@@ -31,12 +31,13 @@ class _CartItemCardState extends State<CartItemCard> {
         margin: EdgeInsets.all(16.0),
         elevation: 4.0,
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(5.0),
           child: Row(
             children: <Widget>[
               Image.asset(
                 widget.product.image.value,
                 width: 130,
+                height: 100,
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -45,10 +46,17 @@ class _CartItemCardState extends State<CartItemCard> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('${widget.product.title}',style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                      )),
+                      Container(
+                        width: 140,
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Text('${widget.product.title}',style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            overflow: TextOverflow.ellipsis,
+                          )),
+                        ),
+                      ),
                       IconButton(
                         icon: Icon(Icons.delete, color: Colors.red),
                         onPressed: (){
@@ -57,7 +65,7 @@ class _CartItemCardState extends State<CartItemCard> {
                       )
                     ],
                   ),
-                  Flexible(child: Container(child: Text('${widget.product.shop}', overflow: TextOverflow.ellipsis,))),
+                  Container(child: Text('${widget.product.shop.name}', overflow: TextOverflow.ellipsis,)),
                   Row(
                     children: [
                       Text('${widget.product.price}'),

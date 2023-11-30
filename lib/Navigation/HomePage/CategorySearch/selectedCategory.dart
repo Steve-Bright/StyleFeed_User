@@ -24,6 +24,7 @@ class _SelectedCategoryState extends State<SelectedCategory> {
               onTap: (){
                 final CategorySearchController categoryC = Get.find<CategorySearchController>();
                 categoryC.categorySearch(categories[i]);
+                // Get.toNamed('/categorySearchPage'); get x package does not work
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> CategorySearchPage()));
               },
               child: Container(

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart'; // Add this import
 import 'package:google_fonts/google_fonts.dart';
 import 'package:profile/profile.dart';
-import 'profile_screen.dart';
+import 'package:style_feed/UserProfile/profile_screen/profile_screen.dart';
 import 'package:intl/intl.dart';
 import 'dart:io';
 import 'package:avatar_glow/avatar_glow.dart';
@@ -48,7 +49,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              Get.back();
+              // Navigator.pop(context);
             },
             icon: Icon(
               Icons.arrow_back_ios_new,
@@ -420,7 +422,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   children: [
                     OutlinedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/profile');
+                        Get.toNamed('/profile');
+                        // Navigator.pushNamed(context, '/profile');
                       },
                       style: OutlinedButton.styleFrom(
                         backgroundColor: Colors.white,

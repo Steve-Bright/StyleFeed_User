@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'categorySearchResultDesign.dart';
-import 'selectedCategory.dart';
-import 'package:style_feed/Navigation/HomePage/CategoriesWidget.dart';
+import 'package:style_feed/Navigation/HomePage/CategorySearch/categorySearchResultDesign.dart';
+import 'package:style_feed/Navigation/HomePage/CategorySearch/selectedCategory.dart';
 import 'package:style_feed/Controller/categorySearchController.dart';
 
 class CategorySearchPage extends StatefulWidget {

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import '../Navigation/UserChatBox/utils/constants.dart';
+import 'package:get/get.dart';
+
+import 'package:style_feed/Navigation/UserChatBox/utils/constants.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'reusable_widget.dart';
-import 'passwordTextFormField.dart';
+import 'package:style_feed/LoginPage/reusable_widget.dart';
+import 'package:style_feed/LoginPage/passwordTextFormField.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -27,7 +29,8 @@ class _SignInScreenState extends State<SignInScreen> {
         email: _emailController.text,
         password: _passwordController.text,
       );
-      Navigator.pushNamedAndRemoveUntil(context, '/userHome', (Route<dynamic> route) => false);
+      Get.offAllNamed('/userHome');
+      // Navigator.pushNamedAndRemoveUntil(context, '/userHome', (Route<dynamic> route) => false);
       ScaffoldMessenger.of(context).showSnackBar(
         reusableSnackBar('Sign In Successful', Colors.green),
       );
@@ -114,19 +117,6 @@ class _SignInScreenState extends State<SignInScreen> {
                               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
                     ),
                   ),
-                  // firebaseUIButton(context, "Sign In", () {
-                  //   _isLoading ? null : _signIn;
-                  //   // FirebaseAuth.instance
-                  //   //     .signInWithEmailAndPassword(
-                  //   //         email: _emailTextController.text,
-                  //   //         password: _passwordTextController.text)
-                  //   //     .then((value) {
-                  //   //   Navigator.push(context,
-                  //   //       MaterialPageRoute(builder: (context) => HomeScreen()));
-                  //   // }).onError((error, stackTrace) {
-                  //   //   print("Error ${error.toString()}");
-                  //   // });
-                  // }),
                   signUpOption()
                 ],
               ),
@@ -148,7 +138,8 @@ class _SignInScreenState extends State<SignInScreen> {
                 style: TextStyle(color: Colors.white70)),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/signUp');
+                Get.toNamed('/signUp');
+                // Navigator.pushNamed(context, '/signUp');
               },
               child: const Text(
                 " Sign Up",
@@ -167,7 +158,8 @@ class _SignInScreenState extends State<SignInScreen> {
           children: [
             GestureDetector(
               onTap: () {
-                Navigator.pushNamedAndRemoveUntil(context, '/userHome', (Route<dynamic> route) => false);
+                Get.offAllNamed('/userHome');
+                // Navigator.pushNamedAndRemoveUntil(context, '/userHome', (Route<dynamic> route) => false);
               },
               child: const Text(
                 "Or log in as guest",
@@ -192,7 +184,8 @@ class _SignInScreenState extends State<SignInScreen> {
           textAlign: TextAlign.right,
         ),
         onPressed: () {
-          Navigator.pushNamed(context, '/resetPassword');
+          Get.toNamed('/resetPassword');
+          // Navigator.pushNamed(context, '/resetPassword');
         }
       ),
     );

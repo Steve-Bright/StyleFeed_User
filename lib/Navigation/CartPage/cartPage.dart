@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../Controller/cartController.dart';
+import 'package:style_feed/Controller/cartController.dart';
 import 'cartItemDesign.dart';
-import '../navigationBar.dart';
+import 'package:style_feed/Navigation/navigationBar.dart';
 import 'orderSuccess/checkout_detail.dart';
 
 

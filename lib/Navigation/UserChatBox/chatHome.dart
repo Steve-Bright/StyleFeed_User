@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../navigationBar.dart';
-import 'chatPage.dart';
+import 'package:get/get.dart';
+import 'package:style_feed/Navigation/navigationBar.dart';
 
 class Message {
   final String text;
@@ -79,7 +79,8 @@ class MessageList extends StatelessWidget {
 
         return InkWell(
           onTap: (){
-            Navigator.pushNamed(context, '/chatPage');
+            Get.toNamed('/chatPage');
+            // Navigator.pushNamed(context, '/chatPage');
           },
           child: ListTile(
             leading: CircleAvatar(

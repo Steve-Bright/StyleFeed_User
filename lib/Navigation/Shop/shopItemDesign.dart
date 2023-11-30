@@ -63,7 +63,8 @@ class _ShopItemGridDesignState extends State<ShopItemGridDesign> {
           ),
           InkWell(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailScreen(widget.product)));
+              Get.to(DetailScreen(widget.product));
+              // Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailScreen(widget.product)));
             },
             child: Container(
               margin: EdgeInsets.all(1),

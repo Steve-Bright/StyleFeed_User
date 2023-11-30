@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'LoginPageComponents/radio.dart';
-import 'LoginPageComponents/checkbox.dart';
+import 'package:get/get.dart';
+import 'package:style_feed/LoginPage/LoginPageComponents/radio.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../Navigation/UserChatBox/utils/constants.dart';
-import 'reusable_widget.dart';
-import 'passwordTextFormField.dart';
+import 'package:style_feed/Navigation/UserChatBox/utils/constants.dart';
+import 'package:style_feed/LoginPage/reusable_widget.dart';
+import 'package:style_feed/LoginPage/passwordTextFormField.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key, required this.isRegistering}) : super(key: key);
@@ -43,7 +43,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     try {
       await supabase.auth.signUp(
           email: email, password: password, data: {'username': username});
-      Navigator.pushNamedAndRemoveUntil(context, '/userHome', (Route<dynamic> route) => false);
+      Get.offAllNamed('/userHome');
+      // Navigator.pushNamedAndRemoveUntil(context, '/userHome', (Route<dynamic> route) => false);
       ScaffoldMessenger.of(context).showSnackBar(
         reusableSnackBar('Sign Up Successful', Colors.green),
       );
@@ -60,7 +61,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
-          onPressed: (){Navigator.pop(context);}
+          onPressed: (){Get.back();}
         ),
         iconTheme: IconThemeData(
           color: Colors.white,

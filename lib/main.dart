@@ -22,6 +22,7 @@ import 'package:style_feed/LoginPage/signInScreen.dart';
 import 'package:style_feed/LoginPage/signUpScreen.dart';
 import 'package:style_feed/LoginPage/reset_password.dart';
 import 'package:style_feed/Navigation/HomePage/SearchPage/searchResultsPage.dart';
+import 'package:style_feed/Navigation/HomePage/CategorySearch/categorySearchPage.dart';
 
 
 Future<void> main() async{
@@ -57,6 +58,7 @@ Future<void> main() async{
         '/profile': (context) => ProfileScreen(),
         '/editProfile': (context) => EditProfileScreen(),
         '/checkoutDetail': (context) => CheckoutDetail(),
+        '/categorySearchPage': (context) => CategorySearchPage(),
       },
     ),
   );

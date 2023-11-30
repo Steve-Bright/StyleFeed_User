@@ -23,7 +23,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
             onTap: (){
               final CategorySearchController categoryC = Get.find<CategorySearchController>();
               categoryC.categorySearch(categories[i]);
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> CategorySearchPage()));
+              Get.toNamed('/categorySearchPage');
+              // Navigator.push(context, MaterialPageRoute(builder: (context)=> CategorySearchPage()));
             },
           child: Container(
             margin: EdgeInsets.all(8),

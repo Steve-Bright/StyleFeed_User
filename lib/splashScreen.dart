@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'LoginPage/signInScreen.dart';
-import 'Navigation/HomePage/home.dart';
+import 'package:style_feed/LoginPage/signInScreen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

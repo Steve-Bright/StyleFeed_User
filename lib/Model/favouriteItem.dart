@@ -1,5 +1,4 @@
-import 'product.dart';
-import 'package:get/get.dart';
+import 'package:style_feed/Model/product.dart';
 
 class FavouriteItem{
   final Product product;

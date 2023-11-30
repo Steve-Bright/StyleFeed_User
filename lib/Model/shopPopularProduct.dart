@@ -1,5 +1,4 @@
 import 'package:style_feed/Model/product.dart';
-import 'package:style_feed/Model/shop.dart';
 
 class ShopPopularProduct{
   final Product product;

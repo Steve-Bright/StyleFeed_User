@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 import 'package:style_feed/Model/shop.dart';
 
 import 'package:style_feed/Controller/shopController.dart';
@@ -28,7 +28,8 @@ class _SellerProfilePageState extends State<SellerProfilePage> {
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.of(context).pop();
+              Get.back();
+              // Navigator.of(context).pop();
             },
           ),
         ),

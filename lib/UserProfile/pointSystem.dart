@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'rewards.dart';
-import 'allPoint.dart';
+import 'package:get/get.dart';
+
+import 'package:style_feed/UserProfile/rewards.dart';
+import 'package:style_feed/UserProfile/allPoint.dart';
 
 class PointSystem extends StatefulWidget {
   const PointSystem({super.key});
@@ -18,7 +20,8 @@ class _PointSystemState extends State<PointSystem> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: (){
-              Navigator.pop(context, '/userHome');
+              Get.offNamed('/profile');
+              // Navigator.pop(context, '/userHome');
             },
             icon: Icon(Icons.arrow_back),
           ),

@@ -66,7 +66,8 @@ class _SearchResultDesignState extends State<SearchResultDesign> {
           ),
           InkWell(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailScreen(widget.product)));
+              Get.to(DetailScreen(widget.product));
+              // Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailScreen(widget.product)));
             },
             child: Container(
               margin: EdgeInsets.all(1),

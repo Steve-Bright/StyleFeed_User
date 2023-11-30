@@ -1,10 +1,11 @@
 import 'dart:ui';
+
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'edit_profile_screen.dart';
+import 'package:style_feed/Navigation/UserChatBox/utils/constants.dart';
 
 
 class ProfileScreen extends StatefulWidget {
@@ -21,7 +22,7 @@ class _ProfileState extends State<ProfileScreen> {
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => Get.offAllNamed('/userHome'),
               icon: Icon(
                 Icons.arrow_back_ios_new,
                 color: Colors.black,
@@ -73,7 +74,8 @@ class _ProfileState extends State<ProfileScreen> {
                     children: [
                       ElevatedButton.icon(
                         onPressed: (){
-                          Navigator.pushNamed(context, '/editProfile');
+                          Get.toNamed('/editProfile');
+                          // Navigator.pushNamed(context, '/editProfile');
                         }  ,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.deepPurple[200],
@@ -282,7 +284,8 @@ class _ProfileState extends State<ProfileScreen> {
 
                 //List
                 ListInPFWidget(title: 'Point System', icon: Icons.favorite, onPress:(){
-                  Navigator.pushNamed(context, '/pointSystem');
+                  Get.toNamed('/pointSystem');
+                  // Navigator.pushNamed(context, '/pointSystem');
                 },),
                 SizedBox(height: 13),
                 ListInPFWidget(title: 'My WishList', icon: Icons.favorite, onPress:(){},),
@@ -295,7 +298,9 @@ class _ProfileState extends State<ProfileScreen> {
                 SizedBox(height: 13),
                 ListInPFWidget(title: 'Settings', icon: Icons.settings, onPress:(){},),
                 SizedBox(height: 13),
-                ListInPFWidget(title: 'Log Out', icon: Icons.logout, textColor: Colors.red[400], endIcon: false, onPress:(){},),
+                ListInPFWidget(title: 'Log Out', icon: Icons.logout, textColor: Colors.red[400], endIcon: false, onPress:() async{
+                  await supabase.auth.signOut();
+                },),
               ],
             ),
           ),

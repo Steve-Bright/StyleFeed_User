@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import '../Model/product.dart';
-import '../Model/cartItem.dart';
+import 'package:style_feed/Model/product.dart';
+import 'package:style_feed/Model/cartItem.dart';
 
 class CartController extends GetxController {
   var cartItems = <CartItem>[].obs; // List of cart items as an observable

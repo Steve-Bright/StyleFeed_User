@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import '../Model/product.dart';
-import '../Model/favouriteItem.dart';
+import 'package:style_feed/Model/product.dart';
+import 'package:style_feed/Model/favouriteItem.dart';
 
 class FavouriteController extends GetxController{
   var favouriteItems = <FavouriteItem>[].obs;

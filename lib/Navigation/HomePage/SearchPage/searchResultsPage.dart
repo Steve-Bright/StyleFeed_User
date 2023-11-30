@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:style_feed/Navigation/HomePage/SearchPage/searchResultDesign.dart';
-import 'searchOptimise.dart';
-import 'package:style_feed/Model/searchedItems.dart';
 import 'package:style_feed/Controller/searchController.dart';
 
 class SearchResultsPage extends StatefulWidget {
