@@ -10,3 +10,5 @@ This project contains pieces of Wai Yan part, Moe Yan part, Swam Htet and Swan H
 
 19/11/2023 - 1:00 am
 This is pain
+
+1/12/2023 -- yayy we are gonna finish on Sunday
