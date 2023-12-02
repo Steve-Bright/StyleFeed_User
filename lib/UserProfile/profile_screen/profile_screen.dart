@@ -46,12 +46,12 @@ class _ProfileState extends State<ProfileScreen> {
             child: Column(
               children: [
                 Profile(
-                  imageUrl: 'assets/profile1.jpg',
+                  imageUrl: 'assets/manan.png',
                 ),
 
                 SizedBox(height: 13),
                 Text(
-                  'Jacob',
+                  'Nan Eaint',
                   style: GoogleFonts.montserrat(
                     textStyle: Theme.of(context).textTheme.headlineSmall,
                     fontWeight: FontWeight.bold,
@@ -60,7 +60,7 @@ class _ProfileState extends State<ProfileScreen> {
                 SizedBox(height: 5),
 
                 Text(
-                  'jacob123@gmail.com',
+                  'naneaint@gmail.com',
                   style: GoogleFonts.montserrat(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,

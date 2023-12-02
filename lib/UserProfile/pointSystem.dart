@@ -20,16 +20,18 @@ class _PointSystemState extends State<PointSystem> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: (){
-              Get.offNamed('/profile');
-              // Navigator.pop(context, '/userHome');
-            },
-            icon: Icon(Icons.arrow_back),
+          appBar: AppBar(
+            leading: IconButton(
+              onPressed: (){
+                Get.offNamed('/profile');
+                // Navigator.pop(context, '/userHome');
+              },
+              icon: Icon(Icons.arrow_back_ios_new_rounded),
+            ),
+            title: Text('Point System'),
+            backgroundColor: Colors.black26,
+            centerTitle: true,
           ),
-          title: Text('Point System')
-        ),
         body: Column(
           children: [
             Container(
