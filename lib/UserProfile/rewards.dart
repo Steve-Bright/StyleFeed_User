@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:style_feed/UserProfile/pointRewardDesign.dart';
+import 'package:style_feed/Model/rewardModel.dart';
 
 class RewardsTab extends StatefulWidget {
   const RewardsTab({super.key});
@@ -33,78 +35,29 @@ class _RewardsTabState extends State<RewardsTab> {
             ),
           ),
 
-          for(int i = 0; i < 5; i++)
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Container(
-                  margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                  height: 130,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white,
-                      border: Border.all(color: Colors.black, width: 2.0)
+          Container(
+            height: 300,
+            child: Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: rewardItems.length,
+                    itemBuilder: (context, index) {
+                      // final item = cartController.cartItems[index];
+                      return RewardDesignCard(index: index);
+                      // SizedBox(height: 30),
+
+                    },
                   ),
-                  child: Row(
-                      children: [
-                        Container(
-                          child: Image.asset('assets/rewards/hotpot.jpg'),
-                          margin: EdgeInsets.all(10),
-                          width: 90,
-                          height: 100,
-                        ),
-                        Container(
-                          margin: EdgeInsets.all(4),
-                          child: Column(
-                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Delicious Pizza', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17,)),
-                                RatingBar.builder(
-                                  initialRating: 3,
-                                  minRating: 1,
-                                  direction: Axis.horizontal,
-                                  allowHalfRating: false,
-                                  itemCount: 5,
-                                  itemSize: 15,
-                                  itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                                  itemBuilder: (context, _) => Icon(
-                                    Icons.star,
-                                    color: Colors.amber,
-                                  ),
-                                  onRatingUpdate: (rating) {
-                                    print(rating);
-                                  },
-                                ),
-                                SizedBox(height: 30),
-                                Text('Discount 30%')
-                              ]
-                          ),
-                        ),
-                        Container(
-                            margin: EdgeInsets.all(10),
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(10),
-                                    child: Text('7k points', style: TextStyle(color: Colors.white)),
-                                    decoration: BoxDecoration(
-                                      color: Colors.amber,
-                                      borderRadius: BorderRadius.circular(15),
-                                    ),
-                                  ),
-                                  TextButton(
-                                      child: Text('Redeem'),
-                                      onPressed: (){
-                                      }
-                                  )
-                                ]
-                            )
-                        )
-                      ]
-                  )
-              ),
-            )
+                ),
+              ],
+            ),
+          ),
+          // for(int i = 0; i < 5; i++)
+          //   SingleChildScrollView(
+          //     scrollDirection: Axis.horizontal,
+          //     child: RewardDesignCard(),
+          //   )
         ],
       ),
     );

@@ -15,7 +15,7 @@ import 'package:style_feed/splashScreen.dart';
 import 'package:style_feed/LoginPage/forgotPassword.dart';
 import 'package:style_feed/UserProfile/pointSystem.dart';
 import 'package:style_feed/Navigation/UserChatBox/chatPage.dart';
-import 'package:style_feed/Navigation/CartPage/orderSuccess/checkout_detail.dart';
+import 'package:style_feed/Navigation/CartPage/orderSuccess/checkoutDetailPage/checkout_detail.dart';
 import 'package:style_feed/UserProfile/profile_screen/profile_screen.dart';
 import 'package:style_feed/UserProfile/profile_screen/edit_profile_screen.dart';
 import 'package:style_feed/LoginPage/signInScreen.dart';
@@ -23,13 +23,17 @@ import 'package:style_feed/LoginPage/signUpScreen.dart';
 import 'package:style_feed/LoginPage/reset_password.dart';
 import 'package:style_feed/Navigation/HomePage/SearchPage/searchResultsPage.dart';
 import 'package:style_feed/Navigation/HomePage/CategorySearch/categorySearchPage.dart';
+import 'package:style_feed/Navigation/CartPage/orderSuccess/address_controller.dart';
+import 'package:style_feed/Controller/pointController.dart';
 
 
 Future<void> main() async{
   Get.put(CartController());
+  Get.put(PointController());
   Get.put(FavouriteController());
   Get.put(SearchingController());
   Get.put(CategorySearchController());
+  Get.put(AddressController());
   WidgetsFlutterBinding.ensureInitialized();
 
   await Supabase.initialize(

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:style_feed/UserProfile/rewards.dart';
 import 'package:style_feed/UserProfile/allPoint.dart';
+import 'package:style_feed/Controller/pointController.dart';
 
 class PointSystem extends StatefulWidget {
   const PointSystem({super.key});
@@ -12,6 +13,8 @@ class PointSystem extends StatefulWidget {
 }
 
 class _PointSystemState extends State<PointSystem> {
+  final PointController pointController = Get.find<PointController>();
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -58,7 +61,7 @@ class _PointSystemState extends State<PointSystem> {
                       Container(
                         alignment: Alignment.center,
                         height: 100,
-                        child: Text('3,000', style: TextStyle(color: Colors.white, fontSize: 60)),
+                        child: Text("${pointController.totalPoints}", style: TextStyle(color: Colors.white, fontSize: 60)),
                       )
                     ]
                   ),

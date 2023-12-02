@@ -6,8 +6,11 @@ import 'dart:convert' show json;
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'dart:convert';
-import 'checkout_detail.dart';
-import 'choose_payment_method.dart';
+import 'address_controller.dart';
+import 'checkoutDetailPage/checkout_detail.dart';
+import 'confirm_order_cod.dart';
+import 'package:clay_containers/clay_containers.dart';
+
 
 class LocationData {
   final Map<String, List<String>> data;
@@ -46,11 +49,16 @@ class Address {
 
 
 class AddressBook extends StatefulWidget {
+  final Function(Address) onSelectAddress;
+
+  const AddressBook({Key? key, required this.onSelectAddress}) : super(key: key);
+
   @override
   _AddressBookState createState() => _AddressBookState();
 }
 
 class _AddressBookState extends State<AddressBook> {
+  AddressController addressController = Get.find();
   final List<Address> addresses = [];
   LocationData? locationData;
 
@@ -66,20 +74,21 @@ class _AddressBookState extends State<AddressBook> {
   void initState() {
     super.initState();
     loadLocationData();
+    // Pre-populated addresses for demonstration
     addresses.add(
       Address(
-        name: 'Wain Yan Linn',
-        phoneNumber: '0123-456-7890',
-        streetAddress: '123 Main St',
-        apartment: 'Apt 101',
+        name: 'Moe Yan',
+        phoneNumber: '09425362977',
+        streetAddress: '33-137 41st Street',
+        apartment: 'Room 709',
         region: 'Yangon Region',
-        township: 'Dawbon',
+        township: 'Botataung',
       ),
     );
     addresses.add(
       Address(
-        name: 'Moe Yan Htun',
-        phoneNumber: '0987-654-3210',
+        name: 'Wai Yan Linn',
+        phoneNumber: '987-654-3210',
         streetAddress: '456 Elm St',
         apartment: 'Suite 202',
         region: 'Yangon Region',
@@ -95,10 +104,10 @@ class _AddressBookState extends State<AddressBook> {
       home: Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            onPressed: (){
+            onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CheckoutDetail()),
+                MaterialPageRoute(builder: (context) => ConfirmOrder()),
               );
             },
             icon: const Icon(
@@ -128,10 +137,14 @@ class _AddressBookState extends State<AddressBook> {
                   return GestureDetector(
                     onTap: () {
                       setState(() {
-                        for (var i = 0; i < addresses.length; i++) {
-                          addresses[i].isSelected = i == index;
+                        for (var address in addresses) {
+                          address.isSelected = false;
                         }
+                        addresses[index].isSelected = true;
                       });
+                      widget.onSelectAddress(addresses[index]);
+                      Navigator.pop(context);
+                      Get.back(result: addresses[index]);
                     },
                     child: AddressTile(
                       address: addresses[index],
@@ -165,12 +178,12 @@ class _AddressBookState extends State<AddressBook> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(0,0,0,100),
+              padding: EdgeInsets.fromLTRB(0,0,0,100),
               child: Container(
                 width: 180,
                 height: 45,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.green!),
+                  border: Border.all(color: Colors.black87!),
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: Padding(
@@ -210,38 +223,13 @@ class _AddressBookState extends State<AddressBook> {
             ),
           ],
         ),
-        bottomNavigationBar: Padding(
-          padding: EdgeInsets.all(20),
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ChoosePaymentMethod()),
-              );
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.deepPurple[200],
-              minimumSize: Size(100, 45),
-              side: BorderSide.none,
-              shape: StadiumBorder(),
-            ),
-            child: Text(
-              'Confrim',
-              style: GoogleFonts.montserrat(
-                color: Colors.grey[800],
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-        ),
 
       ),
     );
   }
 }
 
-class AddressTile extends StatelessWidget {
+class AddressTile extends StatefulWidget {
   final Address address;
   final VoidCallback onEdit;
   final VoidCallback onDelete;
@@ -253,170 +241,117 @@ class AddressTile extends StatelessWidget {
   });
 
   @override
+  State<AddressTile> createState() => _AddressTileState();
+}
+
+class _AddressTileState extends State<AddressTile> {
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: address.isSelected ? Colors.green[50] : Colors.white,
-        border: Border.all(color: Colors.grey),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      padding: EdgeInsets.fromLTRB(10,0,10,15),
-      margin: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                address.name,
-                style: GoogleFonts.montserrat(
-                  color: address.isSelected ? Colors.green[900]: Colors.black,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-
-
-              PopupMenuButton(
-                icon: Icon(Icons.more_vert),
-                itemBuilder: (context) {
-                  return [
-                    PopupMenuItem(
-                      value: 'edit',
-                      child: Text(
-                          'Edit',
-                        style: GoogleFonts.montserrat(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    PopupMenuItem(
-                      value: 'delete',
-                      child: Text(
-                        'Delete',
-                        style: GoogleFonts.montserrat(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ];
-                },
-                onSelected: (value) {
-                  if (value == 'edit') {
-                    onEdit();
-                  } else if (value == 'delete') {
-                    onDelete();
-                  }
-                },
-              ),
-
-
-            ],
-          ),
-
-          Column(
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+      child: ClayContainer(
+        height: 190,
+        color: widget.address.isSelected ? Colors.grey[300] : Colors.grey[100],
+        borderRadius: 10,
+        depth: widget.address.isSelected ? 20 : 10,
+        spread: widget.address.isSelected ? 6 : 2,
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    '${address.phoneNumber}',
-                    style: GoogleFonts.montserrat(
-                      fontSize: 13,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.address.name,
+                          style: GoogleFonts.montserrat(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: widget.address.isSelected ? Colors.green : Colors.black,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          'Phone: ${widget.address.phoneNumber}',
+                          style: GoogleFonts.montserrat(
+                            fontSize: 12,
+                            color: Colors.black87,
+                          ),
+                        ),
+                      ],
                     ),
+                  ),
+                  PopupMenuButton(
+                    icon: Icon(Icons.more_vert, color: Colors.black),
+                    itemBuilder: (context) {
+                      return [
+                        PopupMenuItem(
+                          value: 'edit',
+                          child: Text('Edit', style: GoogleFonts.montserrat()),
+                        ),
+                        PopupMenuItem(
+                          value: 'delete',
+                          child: Text('Delete', style: GoogleFonts.montserrat()),
+                        ),
+                      ];
+                    },
+                    onSelected: (value) {
+                      if (value == 'edit') {
+                        widget.onEdit();
+                      } else if (value == 'delete') {
+                        widget.onDelete();
+                      }
+                    },
                   ),
                 ],
               ),
               SizedBox(height: 10),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    'Street Address : ',
-                    style: GoogleFonts.montserrat(
-                      fontSize: 12,
-                    ),
-                  ),
-
-                  Text(
-                    '${address.streetAddress}',
-                    style: GoogleFonts.montserrat(
-                      fontSize: 12,
-                    ),
-                  ),
-                ],
+              Text(
+                'Street Address: ${widget.address.streetAddress}',
+                style: GoogleFonts.montserrat(
+                  fontSize: 12,
+                  color: Colors.black87,
+                ),
               ),
-
               SizedBox(height: 5),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    'Apartment/Unit : ',
-                    style: GoogleFonts.montserrat(
-                      fontSize: 12,
-                    ),
-                  ),
-                  Text(
-                    ' ${address.apartment}',
-                    style: GoogleFonts.montserrat(
-                      fontSize: 12,
-                    ),
-                  ),
-                ],
+              Text(
+                'Apartment/Unit: ${widget.address.apartment}',
+                style: GoogleFonts.montserrat(
+                  fontSize: 12,
+                  color: Colors.black87,
+                ),
               ),
-
               SizedBox(height: 5),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    'Region/State : ',
-                    style: GoogleFonts.montserrat(
-                      fontSize: 12,
-                    ),
-                  ),
-
-                  Text(
-                    '${address.region}',
-                    style: GoogleFonts.montserrat(
-                      fontSize: 12,
-                    ),
-                  ),
-                ],
+              Text(
+                'Region/State: ${widget.address.region}',
+                style: GoogleFonts.montserrat(
+                  fontSize: 12,
+                  color: Colors.black87,
+                ),
               ),
-
               SizedBox(height: 5),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    'Township/City : ',
-                    style: GoogleFonts.montserrat(
-                      fontSize: 12,
-                    ),
-                  ),
-                  Text(
-                    '${address.township}',
-                    style: GoogleFonts.montserrat(
-                      fontSize: 12,
-                    ),
-                  ),
-                ],
+              Text(
+                'Township/City: ${widget.address.township}',
+                style: GoogleFonts.montserrat(
+                  fontSize: 12,
+                  color: Colors.black87,
+                ),
               ),
-
             ],
           ),
+        ),
 
-        ],
       ),
     );
+
+
+
   }
 }
 
@@ -464,8 +399,15 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
           onPressed: (){
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => AddressBook()),
+              MaterialPageRoute(
+                builder: (context) => AddressBook(
+                  onSelectAddress: (Address selected) {
+                    // Do nothing or handle as needed for this context
+                  },
+                ),
+              ),
             );
+
           },
           icon: const Icon(
             Icons.arrow_back_ios_new,
@@ -517,7 +459,7 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
                   decoration:  InputDecoration(
                     border: InputBorder.none,
                     contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                    EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                     hintText: 'Your Name',
                     hintStyle: GoogleFonts.montserrat(
                       color: Colors.grey[400],
@@ -600,15 +542,15 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
                   controller: streetController,
                   keyboardType: TextInputType.streetAddress,
                   decoration:  InputDecoration(
-                      border: InputBorder.none,
-                      contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                      hintText: 'Your Street / Road Address',
-                      hintStyle: GoogleFonts.montserrat(
-                        color: Colors.grey[400],
-                        fontSize: 11,
-                        letterSpacing: 1,
-                      ),
+                    border: InputBorder.none,
+                    contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                    hintText: 'Your Street / Road Address',
+                    hintStyle: GoogleFonts.montserrat(
+                      color: Colors.grey[400],
+                      fontSize: 11,
+                      letterSpacing: 1,
+                    ),
                       prefixIcon: const Icon(
                         Icons.add_road,
                         color: Colors.grey,
@@ -685,7 +627,7 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
                     padding: EdgeInsets.fromLTRB(20, 0, 25, 0),
                     value: widget.selectedRegion.isNotEmpty ? widget.selectedRegion : null,
                     hint: Text(
-                      'Select State/Region',
+                        'Select State/Region',
                       style: GoogleFonts.montserrat(
                         color: Colors.grey[400],
                         fontSize: 11,
@@ -697,7 +639,7 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
                       return DropdownMenuItem(
                         value: value,
                         child: Text(
-                          value,
+                            value,
                           style: GoogleFonts.montserrat(
                             color: Colors.grey[800],
                             fontWeight: FontWeight.w500,
@@ -795,8 +737,15 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => AddressBook()),
+                    MaterialPageRoute(
+                      builder: (context) => AddressBook(
+                        onSelectAddress: (Address selected) {
+                          // Do nothing or handle as needed for this context
+                        },
+                      ),
+                    ),
                   );
+
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
@@ -831,7 +780,7 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
                 Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepPurple[200],
+                backgroundColor: Colors.blueGrey[200],
                 minimumSize: const Size(130, 45),
                 side: BorderSide.none,
                 shape: const StadiumBorder(),
@@ -885,8 +834,15 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
           onPressed: (){
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => AddressBook()),
+              MaterialPageRoute(
+                builder: (context) => AddressBook(
+                  onSelectAddress: (Address selected) {
+                    // Do nothing or handle as needed for this context
+                  },
+                ),
+              ),
             );
+
           },
           icon: const Icon(
             Icons.arrow_back_ios_new,
@@ -1106,7 +1062,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                     padding: EdgeInsets.fromLTRB(20, 0, 25, 0),
                     value: widget.selectedRegion.isNotEmpty ? widget.selectedRegion : null,
                     hint: Text(
-                      'Select State/Region',
+                        'Select State/Region',
                       style: GoogleFonts.montserrat(
                         color: Colors.grey[600],
                         fontSize: 11,
@@ -1118,7 +1074,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                       return DropdownMenuItem(
                         value: value,
                         child: Text(
-                          value,
+                            value,
                           style: GoogleFonts.montserrat(
                             color: Colors.grey[800],
                             fontWeight: FontWeight.w500,
@@ -1216,8 +1172,14 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => AddressBook()),
+                    MaterialPageRoute(
+                      builder: (context) => AddressBook(
+                        onSelectAddress: (Address selected) {
+                        },
+                      ),
+                    ),
                   );
+
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
@@ -1253,7 +1215,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                 Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepPurple[200],
+                backgroundColor: Colors.blueGrey[200],
                 minimumSize: const Size(130, 45),
                 side: BorderSide.none,
                 shape: const StadiumBorder(),
@@ -1273,3 +1235,4 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
     );
   }
 }
+

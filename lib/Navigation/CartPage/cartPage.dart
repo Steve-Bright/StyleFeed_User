@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:style_feed/Controller/cartController.dart';
 import 'cartItemDesign.dart';
 import 'package:style_feed/Navigation/navigationBar.dart';
-import 'orderSuccess/checkout_detail.dart';
+import 'orderSuccess/checkoutDetailPage/checkout_detail.dart';
 
 
 class CartPage extends StatefulWidget {

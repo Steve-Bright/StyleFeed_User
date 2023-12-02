@@ -7,10 +7,12 @@ class CartController extends GetxController {
   //cartItems need to be external source, like json, so that the data won't lose when the use navigates to the another page.
 
   var _qty = 1.obs;
+  var deliveryFees = 2500.obs;
   var _cartIdCounter = 1.obs;
   var totalDiscount = 0.obs;
   var subTotalCartItem;
   var totalCartPrice = 0.obs;
+  var totalWholePrice = 0.obs;
 
   bool addToCart(Product product) {
 
@@ -27,6 +29,7 @@ class CartController extends GetxController {
       cartItems.add(cartProduct);
       totalDiscount = totalDiscount + cartItems[0].subDiscount;
       totalCartPrice = RxInt(cartItems[0].subTotal); // add the first digit to the subtotal
+      totalWholePrice = RxInt(cartItems[0].subTotal) + deliveryFees.value;
       return true;
     }
     else{
@@ -37,6 +40,7 @@ class CartController extends GetxController {
         cartItems.add(cartProduct);
         totalDiscount = totalDiscount + cartProduct.subDiscount;
         totalCartPrice = totalCartPrice + cartProduct.subTotal;
+        totalWholePrice = totalWholePrice + cartProduct.subTotal;
         return true;
       }
       return false;
@@ -52,9 +56,11 @@ class CartController extends GetxController {
       cartItems[index].quantity++;
       cartItems[index].subDiscount = cartItems[index].product.discount.value * cartItems[index].quantity;
       totalDiscount = totalDiscount + cartItems[index].subDiscount;
+      totalWholePrice = totalWholePrice - cartItems[index].subTotal;
       totalCartPrice = totalCartPrice - cartItems[index].subTotal; //subtract the current sub total of the item in the cart.
       cartItems[index].subTotal = ((cartItems[index].product.price.value - cartItems[index].product.discount.value) * cartItems[index].quantity);
       totalCartPrice = totalCartPrice + cartItems[index].subTotal; // combine the sub total of the item in the cart.
+      totalWholePrice = totalWholePrice + cartItems[index].subTotal;
       // Update the cartItems list to trigger the observers
       cartItems[index] = cartItems[index];
     }
@@ -69,9 +75,11 @@ class CartController extends GetxController {
       cartItems[index].quantity--;
       cartItems[index].subDiscount = cartItems[index].product.discount.value * cartItems[index].quantity;
       totalDiscount = totalDiscount + cartItems[index].subDiscount;
+      totalWholePrice = totalWholePrice - cartItems[index].subTotal;
       totalCartPrice = totalCartPrice - cartItems[index].subTotal; //subtract the current sub total of the item in the cart.
       cartItems[index].subTotal = ((cartItems[index].product.price.value - cartItems[index].product.discount.value) * cartItems[index].quantity);
       totalCartPrice = totalCartPrice + cartItems[index].subTotal; // combine the sub total of the item in the cart.
+      totalWholePrice = totalWholePrice + cartItems[index].subTotal;
       // Update the cartItems list to trigger the observers
       cartItems[index] = cartItems[index];
     }
@@ -81,6 +89,7 @@ class CartController extends GetxController {
     var index = cartItems.indexWhere((cartProduct) => cartProduct.cartId == cartProductId);
     totalDiscount = totalDiscount - cartItems[index].subDiscount;
     totalCartPrice = totalCartPrice - cartItems[index].subTotal; //totally remove the sub total from the total cart price
+    totalWholePrice = totalWholePrice - cartItems[index].subTotal;
     cartItems.removeAt(index);
   }
 

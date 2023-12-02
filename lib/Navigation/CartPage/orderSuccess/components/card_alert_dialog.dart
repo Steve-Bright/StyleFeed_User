@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../confirm_order_credit.dart';
 
 class CardAlertDialog extends StatelessWidget {
   const CardAlertDialog({
@@ -41,15 +40,14 @@ class CardAlertDialog extends StatelessWidget {
               padding: EdgeInsets.all(20),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ConfirmOrderCredit()),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => ConfirmOrderCredit()),
+                  // );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple[200],
-                  minimumSize: Size(250, 45
-                  ),
+                  backgroundColor: Colors.blueGrey[200],
+                  minimumSize: Size(250, 45),
                   side: BorderSide.none,
                   shape: StadiumBorder(),
                 ),
