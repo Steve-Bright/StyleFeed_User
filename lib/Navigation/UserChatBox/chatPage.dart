@@ -224,7 +224,7 @@ class _ChatBubble extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             color: message.isMine
-                ? Theme.of(context).primaryColor
+                ? Colors.grey[300]
                 : Colors.grey[300],
             borderRadius: BorderRadius.circular(8),
           ),

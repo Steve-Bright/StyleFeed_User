@@ -21,7 +21,7 @@ class _CheckoutDetailState extends State<CheckoutDetail> {
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios_new, color: Colors.black),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Get.toNamed('/cart'),
         ),
         backgroundColor: Colors.white,
         elevation: 0,

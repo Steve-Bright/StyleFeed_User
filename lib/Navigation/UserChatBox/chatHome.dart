@@ -19,7 +19,7 @@ class User {
 class ChatHome extends StatelessWidget {
   final List<Message> messages = [
     Message("Yes, still instock", "High Cultured"),
-    Message("There would be two colors for that shirt, sir", "Yangoods")
+    //Message("There would be two colors for that shirt, sir", "Yangoods")
     // Message("Br mote srr yin kg ma ll", "Ma Nan"),
     // Message("Laptop gyi lag ny p", "Swam Htet"),
     // Message("tay chin tl", "Swan Htet Naing"),
@@ -29,7 +29,7 @@ class ChatHome extends StatelessWidget {
 
   final List<User> users = [
     User("High Cultured", "assets/pfp/highculturedlogo.png"),
-    User("Yangoods", "assets/pfp/yangoods.png")
+    //User("Yangoods", "assets/pfp/yangoods.png")
     // User("Ma Nan", "assets/pfp/winter.jpg"),
     // User("Swam Htet", "assets/pfp/winter.jpg"),
     // User("Swan Htet Naing", "assets/pfp/winter.jpg"),
@@ -37,29 +37,30 @@ class ChatHome extends StatelessWidget {
     // User("Ma Thiri", "assets/pfp/winter.jpg"),
   ];
 
-  final String currentUserProfileImage = "assets/pfp/winter.jpg";
+  final String currentUserProfileImage = "assets/profile_image.jpg";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          appBar: AppBar(
-            title: Text('Messages'),
-            // leading: IconButton(
-            //   icon: Icon(Icons.arrow_back),
-            //   onPressed: () {
-            //     Navigator.pop(context);
-            //   },
-            // ),
-            // Add the user's profile image to the top right corner
-            actions: [
-              CircleAvatar(
-                backgroundImage: AssetImage(currentUserProfileImage),
-                radius: 20, // Adjust the size as needed
-              ),
-            ],
-          ),
-          body: MessageList(messages: messages, users: users),
-          bottomNavigationBar: MyButtonNav());
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: Text('Messages', style: TextStyle(color: Colors.black),),
+          // leading: IconButton(
+          //   icon: Icon(Icons.arrow_back),
+          //   onPressed: () {
+          //     Navigator.pop(context);
+          //   },
+          // ),
+          // Add the user's profile image to the top right corner
+          // actions: [
+          //   CircleAvatar(
+          //     backgroundImage: AssetImage(currentUserProfileImage),
+          //     radius: 20, // Adjust the size as needed
+          //   ),
+          // ],
+        ),
+        body: MessageList(messages: messages, users: users),
+        bottomNavigationBar: MyButtonNav());
   }
 }
 
@@ -79,8 +80,7 @@ class MessageList extends StatelessWidget {
 
         return InkWell(
           onTap: (){
-            Get.toNamed('/chatPage');
-            // Navigator.pushNamed(context, '/chatPage');
+            Navigator.pushNamed(context, '/chatPage');
           },
           child: ListTile(
             leading: CircleAvatar(
@@ -94,3 +94,4 @@ class MessageList extends StatelessWidget {
     );
   }
 }
+
