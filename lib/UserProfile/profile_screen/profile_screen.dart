@@ -258,7 +258,7 @@ class _ProfileState extends State<ProfileScreen> {
                                   'Returns',
                                   style: GoogleFonts.montserrat(
                                     color: Colors.black,
-                                    fontSize: 11,
+                                    fontSize: 8,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),

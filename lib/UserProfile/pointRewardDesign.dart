@@ -29,8 +29,8 @@ class RewardDesignCard extends StatelessWidget {
                 height: 100,
               ),
               Container(
-                width: 150,
-                margin: EdgeInsets.all(4),
+                width: 140,
+                margin: EdgeInsets.all(2),
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,7 +60,7 @@ class RewardDesignCard extends StatelessWidget {
                 ),
               ),
               Container(
-                  margin: EdgeInsets.all(10),
+                  margin: EdgeInsets.all(2),
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
